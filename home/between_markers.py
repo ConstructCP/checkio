@@ -1,16 +1,19 @@
 def between_markers(text: str, begin: str, end: str) -> str:
+    """
+    Return part of string between given markers.
+    If begin marker is not found - return substring from the beginning to end marker.
+    If end marker not found - return substring from begin marker to end.
+    If both marker weren't found - return the whole string
+    """
     pos_begin = text.find(begin)
     pos_end = text.find(end)
-    if pos_begin == -1 and pos_end == -1:
-        return text
-    elif pos_begin == -1:
-        return text[:pos_end]
-    elif pos_end == -1:
-        pos_begin += len(begin)
-        return text[pos_begin:]
+    if pos_begin < 0:
+        pos_begin = None
     else:
         pos_begin += len(begin)
-        return text[pos_begin:pos_end]
+    if pos_end < 0:
+        pos_end = None
+    return text[pos_begin:pos_end]
 
 
 if __name__ == '__main__':

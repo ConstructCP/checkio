@@ -17,7 +17,9 @@ MORSE = {'.-': 'a', '-...': 'b', '-.-.': 'c',
 
 
 def morse_decoder(code: str) -> str:
-    """Decode morse text basing on table"""
+    """
+    Decode morse text basing on table
+    """
     decoded_text = []
     for word in re.findall(r'[\.-]+|\s{3}', code):
         if word == '   ':

@@ -1,6 +1,6 @@
 def checkio(array: list) -> int:
     """
-        sums even-indexes elements and multiply at the last
+    Sums elements with even indexes and multiply by the last element
     """
     if len(array) == 0:
         return 0

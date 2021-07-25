@@ -2,6 +2,9 @@ from typing import List, Any
 
 
 def all_the_same(elements: List[Any]) -> bool:
+    """
+    Check if all files in list are the same
+    """
     if len(elements) == 0:
         return True
 

@@ -2,13 +2,15 @@ from datetime import datetime
 
 
 def format_day(dt: datetime) -> str:
-    '''format year, month and day in readable format'''
+    """
+    Format year, month and day in readable format
+    """
     month = datetime.strftime(dt, '%B')
     return f'{dt.day} {month} {dt.year} year'
 
 
 def format_time(dt: datetime) -> str:
-    '''format hours and minustes in readabale format'''
+    """format hours and minustes in readabale format"""
     h, m = dt.hour, dt.minute
     h_formatted = f'{h} hour' if h == 1 else f'{h} hours'
     m_formatted = f'{m} minute' if m == 1 else f'{m} minutes'

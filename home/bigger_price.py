@@ -1,4 +1,7 @@
 def bigger_price(limit: int, data: list) -> list:
+    """
+    Find n goods with biggest prices in the list. Return only these n goods.
+    """
     sorted_goods = sorted(data, key=lambda x: x['price'], reverse=True)
     return sorted_goods[:limit]
 

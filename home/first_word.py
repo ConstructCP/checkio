@@ -1,6 +1,6 @@
 def first_word(text: str) -> str:
     """
-        returns the first word in a given text.
+    Returns the first word in a given text.
     """
     word_beginning, word_end = None, None
     for index, symbol in enumerate(text):

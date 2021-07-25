@@ -1,6 +1,9 @@
 from datetime import datetime
 
-def days_diff(date1, date2):
+def days_diff(date1: (int, int, int), date2: (int, int, int)) -> int:
+    """
+    Calculate difference between given 2 dates in days
+    """
     date1 = datetime(*date1)
     date2 = datetime(*date2)
     diff = date1 - date2
