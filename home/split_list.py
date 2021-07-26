@@ -1,9 +1,8 @@
-def split_list(items: list) -> list:
-    # find the middle number
-    #     - check len is even
-    #     - calc position of middle element
-    # create 2 lists
-
+def split_list(items: list) -> (list, list):
+    """
+    Split list by half. In case of odd number of elements, first list should 
+    contain the middle element. If list is empty - return 2 empty lists
+    """
     is_len_even = len(items) % 2 == 0
     if is_len_even:
         middle_element_pos = len(items) // 2

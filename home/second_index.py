@@ -1,6 +1,7 @@
 def second_index(text: str, symbol: str) -> [int, None]:
     """
-        returns the second index of a symbol in a given text
+    Return the second index of a symbol in a given text. 
+    Return None in case of 0 or 1 occurencies of symbol in a text.
     """
     first_index = text.find(symbol)
     print(text[first_index + 1:])

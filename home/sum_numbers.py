@@ -1,4 +1,7 @@
 def sum_numbers(text: str) -> int:
+    """
+    Sum all numbers in a text
+    """
     sum = 0
     for word in text.split():
         try:

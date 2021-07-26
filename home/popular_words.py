@@ -1,4 +1,7 @@
 def popular_words(text: str, words: list) -> dict:
+    """
+    Calculate how many times given words appear in text. Return dict in form {"word": occurencies}
+    """
     counter = {search_word: 0 for search_word in words}
     for word in text.split():
         word = word.lower()

@@ -1,6 +1,7 @@
 def left_join(phrases: tuple) -> str:
     """
-        Join strings and replace "right" to "left"
+    Join strings in the tuple using ',' as delimeter and 
+    replace all occurencies of "right" to "left".
     """
     result = ''
     for string in phrases:

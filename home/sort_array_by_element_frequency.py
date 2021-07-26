@@ -1,5 +1,6 @@
 from collections import Counter
 
+
 def frequency_sort(items: list) -> list:
     """
     Sort elements of list by frequency. Most frequent first.

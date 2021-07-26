@@ -1,29 +1,29 @@
 from itertools import product
 
 
+def get_covering_positions(pawn: (int, int)) -> list:
+    """
+    Calculate positions that can cover given pawn.
+    """
+    hor, vert = pawn[0], pawn[1]
+    covering_positions = []
+    pos1 = (hor - 1, vert - 1)
+    pos2 = (hor + 1, vert - 1)
+    for pos in (pos1, pos2):
+        if 0 <= pos[0] < 8 and 0 <= pos[1] < 8:
+            covering_positions.append(pos)
+    return covering_positions
+
+
 def safe_pawns(pawns: set) -> int:
-    hor_grid = list('abcdefgh')
+    """
+    Find pawns that are covered by at least 1 another pawn. Return the number of covered pawns.
+    """
     covered_counter = 0
-    pawns = [(pawn[0], int(pawn[1])) for pawn in pawns]
-    print(pawns)
+    pawns = [(ord(pawn[0]) - ord('a'), int(pawn[1])) for pawn in pawns]
     for pawn in pawns:
-        hor = pawn[0]
-        vert = pawn[1]
-
-        if vert == 1:
-            continue
-        if hor == 'a':
-            covering_positions = (('b', vert - 1),)
-        elif hor == 'h':
-            covering_positions = (('g', vert - 1),)
-        else:
-            hor_index = hor_grid.index(hor)
-            covering_positions = (
-                (hor_grid[hor_index - 1], vert - 1),
-                (hor_grid[hor_index + 1], vert - 1)
-            )
-
-        if any(pos in pawns for pos in covering_positions):
+        covering_pos = get_covering_positions(pawn)
+        if any(pos in pawns for pos in covering_pos):
             covered_counter += 1
     return covered_counter
 
