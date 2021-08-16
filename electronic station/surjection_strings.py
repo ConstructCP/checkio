@@ -1,6 +1,3 @@
-from collections import Counter
-
-
 def isometric_strings(a: str, b: str) -> bool:
     """
     Check if strings are isometric:  all characters of string a must have
