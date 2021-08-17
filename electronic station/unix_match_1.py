@@ -8,6 +8,7 @@ class RegexProcessingError(Exception):
 
 
 def get_next(iterator: Iterator) -> Any:
+    """ Get next item from iterator. Return None if operator is exhausted """
     try:
         return next(iterator)
     except StopIteration:
@@ -15,6 +16,7 @@ def get_next(iterator: Iterator) -> Any:
 
 
 def exhaust_iterator(iterator: Iterator) -> None:
+    """ Exhaust iterator """
     deque(iterator, maxlen=0)
 
 
@@ -37,31 +39,36 @@ def process_asterisk(regex_iter: Iterator, match_iter: Iterator) -> None:
 
 
 def process_question_mark(match_it: Iterator) -> None:
+    """ Process ? in regex. Get any symbol or raise exception if iterator is exhausted """
     next_match_symbol = get_next(match_it)
     if next_match_symbol is None:
         raise RegexProcessingError
 
 
 def unix_match(filename: str, pattern: str) -> bool:
+    """
+    Check if filename matches pattern.
+    ? in pattern means any symbol
+    * in pattern means sequence of any symbols
+    """
     pattern_it = iter(pattern)
     file_it = iter(filename)
     while True:
         pattern_char = get_next(pattern_it)
         try:
-            if pattern_char:
-                if pattern_char == '*':
-                    process_asterisk(pattern_it, file_it)
-                elif pattern_char == '?':
-                    process_question_mark(file_it)
-                else:
-                    file_char = get_next(file_it)
-                    if not pattern_char == file_char:
-                        raise RegexProcessingError
-            else:
-                # If nothing left in pattern - check if filename is empty too
+            if pattern_char == '*':
+                process_asterisk(pattern_it, file_it)
+            elif pattern_char == '?':
+                process_question_mark(file_it)
+            elif pattern_char is None:
+                # End of pattern. Check if filename is also at end
                 if get_next(file_it) is None:
                     break
                 else:
+                    raise RegexProcessingError
+            else:
+                file_char = get_next(file_it)
+                if not pattern_char == file_char:
                     raise RegexProcessingError
         except RegexProcessingError:
             return False
