@@ -3,12 +3,12 @@ from typing import Union, List
 
 def flatten(dictionary: dict) -> dict:
     """ Remove nested dictionaries and replace them as outer_dict/nested_dict : key """
-
     flattened_dict = get_keys(dictionary)
     return flattened_dict
 
 
 def get_keys(to_flatten: dict, key_stack: Union[List, None] = None) -> dict:
+    """ Recursively get flattened keys """
     if key_stack is None:
         key_stack = []
     flattened = {}
